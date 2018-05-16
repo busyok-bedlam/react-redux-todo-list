@@ -1,9 +1,8 @@
 import { ADD_TODO,DEL_TODO,COMPLETE_TODO} from "../constants";
 
-const initialState = [{ id: 100,done: false,text: "gggg"}]
 
 
-const todos = (state = initialState,action) => {
+const todos = (state = [],action) => {
     switch(action.type){
         case ADD_TODO: {
             let { text,id,done } = action;

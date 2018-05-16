@@ -20,6 +20,7 @@ const config = {
             template: path.join(__dirname, "/src/template.ejs")
         })
     ],
+    devtool: "source-map",
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,

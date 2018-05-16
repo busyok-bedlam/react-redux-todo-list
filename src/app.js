@@ -1,22 +1,27 @@
 import React from "react";
-import Form from "./form";
-import Head from "./head";
-import List from "./list";
+import TodoForm from "./containers/todo-form";
+import Head from "./components/head";
+import TodoList from "./containers/list-container";
 import { createStore,applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from "react-redux";
-import { rootReducer } from "../reducers"
+import { rootReducer } from "./reducers"
 
 const store = createStore(rootReducer,composeWithDevTools(applyMiddleware()));
+// store.dispatch(
+//     {
+//         type:"ADD_TODO",id:1,text:"ppp",done:true
+//     }
+// )
 console.log(store.getState());
 
 const App = () => {
     return (
         <Provider store={store} >
             <div className="App" >
-                <Head/>
-                <Form/>
-                <List/>
+                <Head />
+                <TodoForm />
+                <TodoList />
             </div>
         </Provider>
     )
