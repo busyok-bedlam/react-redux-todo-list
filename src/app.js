@@ -6,14 +6,19 @@ import { createStore,applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from "react-redux";
 import { rootReducer } from "./reducers"
+import { loadState, saveState } from "./localStorage";
+import {toggleEditAction} from "./actions"
 
-const store = createStore(rootReducer,composeWithDevTools(applyMiddleware()));
-// store.dispatch(
-//     {
-//         type:"ADD_TODO",id:1,text:"ppp",done:true
-//     }
-// )
-console.log(store.getState());
+const initial = loadState()
+const store = createStore(rootReducer, initial, composeWithDevTools(applyMiddleware()));
+
+store.subscribe(() => {
+    saveState({ todos: store.getState().todos});
+    console.log(loadState())
+});
+
+console.log(store.getState())
+console.log(store.getState())
 
 const App = () => {
     return (
